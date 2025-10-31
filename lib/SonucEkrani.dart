@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sayi_tahmin_app/TahminEkrani.dart';
 
 class Sonucekrani extends StatefulWidget {
-  const Sonucekrani({super.key});
+
+  final bool sonuc;
+
+
+  Sonucekrani({required this.sonuc});
 
   @override
   State<Sonucekrani> createState() => _SonucekraniState();
@@ -23,8 +26,8 @@ class _SonucekraniState extends State<Sonucekrani> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset("image/mutlu_resim.png"),
-            Text("Kazandınız", style: TextStyle(
+            widget.sonuc ? Image.asset("image/mutlu_resim.png") : Image.asset("image/uzgun_resim.png"),
+            Text(widget.sonuc ? "Kazandınız" : "Kaybettiniz", style: TextStyle(
               color: Colors.indigo,
               fontSize: 30,
               fontWeight: FontWeight.bold,

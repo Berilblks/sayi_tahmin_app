@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sayi_tahmin_app/SonucEkrani.dart';
@@ -10,6 +12,19 @@ class Tahminekrani extends StatefulWidget {
 }
 
 class _TahminekraniState extends State<Tahminekrani> {
+
+  var tfTahmin = TextEditingController();
+  int rastgeleSayi = 0;
+  int kalanHak = 5;
+  String yonlendirme = "";
+
+  @override
+  void initState() {
+    super.initState();
+    rastgeleSayi = Random().nextInt(101);
+    print("Rastgele Sayı : $rastgeleSayi");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,18 +38,19 @@ class _TahminekraniState extends State<Tahminekrani> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("Kalan Hak : 4", style: TextStyle(
+            Text("Kalan Hak : $kalanHak", style: TextStyle(
               color: Colors.red,
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),),
-            Text("Yardım : Tahmini azalt", style: TextStyle(
+            Text("Yardım :  $yonlendirme", style: TextStyle(
               color: Colors.black,
               fontSize: 24,
             ),),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: TextField(
+                  controller: tfTahmin,
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
@@ -55,7 +71,28 @@ class _TahminekraniState extends State<Tahminekrani> {
                   foregroundColor: Colors.white,
                 ),
                 onPressed: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Sonucekrani()));
+                  setState(() {
+                    kalanHak = kalanHak - 1;
+                  });
+                  int tahmin = int.parse(tfTahmin.text);
+                  if(tahmin == rastgeleSayi){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Sonucekrani(sonuc: true,)));
+                    return;
+                  }
+                  if(tahmin > rastgeleSayi){
+                    setState(() {
+                      yonlendirme = "Tahmini Azalt";
+                    });
+                  }
+                  if(tahmin < rastgeleSayi){
+                    setState(() {
+                      yonlendirme = "Tahmini Arttır";
+                    });
+                  }
+                  if(kalanHak == 0){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Sonucekrani(sonuc: false,)));
+                  }
+                  tfTahmin.text = "";
                 },
               ),
             ),

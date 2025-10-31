@@ -47,7 +47,8 @@ class _AnasayfaState extends State<Anasayfa> {
               color: Colors.indigo,
               fontSize: 30,
               fontWeight: FontWeight.bold,
-            ),),
+              ),
+            ),
             Image.asset("image/zar_resim.png"),
             SizedBox(
               width: 200,
