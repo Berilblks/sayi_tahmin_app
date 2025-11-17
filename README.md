@@ -1,16 +1,33 @@
-# sayi_tahmin_app
+# Number Guessing Game (Sayı Tahmin Uygulaması)
 
-A new Flutter project.
+**It is a simple mobile game application that aims to have the user guess a hidden number. Dart and Flutter are easy to use.**
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+##  About the Project
 
-A few resources to get you started if this is your first Flutter project:
+This project focuses on implementing a classic number guessing game, which serves as an excellent exercise for practicing Flutter development fundamentals, state management, and navigation between screens. The application features a clean, intuitive start screen and a functional game screen.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* **Game Flow:** The game is structured around two main screens: the **Anasayfa (Home Page)** for launching the game, and the **TahminEkrani (Guessing Screen)** where the core logic (random number generation, comparison, and user feedback) takes place.
+* **Intuitive UI:** A clear and simple interface encourages immediate user interaction with a striking **Indigo** color scheme and a compelling call-to-action (Start Game button).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+##  Technologies
+
+ **Main Language** : **Dart**  The programming language used for defining game logic and UI. 
+ **Framework** : **Flutter SDK**  Employed for building the cross-platform mobile user interface. 
+ **Navigation** : **`Navigator`**  Used to transition the user smoothly from the home screen to the guessing screen (`TahminEkrani`). 
+ **UI Design** : **Material Design**  Utilizing standard Flutter widgets (AppBar, ElevatedButton, Center) for a modern look. 
+
+
+##  Key Features
+
+The application's home screen and overall structure include the following features:
+
+* **Welcome Screen (`Anasayfa`):** A compelling entry point with the application's title and branding.
+* **Visual Element:** Integrates a relevant image asset (`image/zar_resim.png`) to visually represent the game concept.
+* **Game Launch:** A dedicated "OYUNA BAŞLA" (Start Game) button initiates navigation to the game logic screen.
+* **Core Game Logic (TahminEkrani):** 
+    * Random odds of the secret number.
+    * Retrieving user accounts and comparing predictions.
+    * Providing "UP" or "DOWN" explanations.
+    * Counting remaining guessing freedom.
